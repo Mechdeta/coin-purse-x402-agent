@@ -8,7 +8,9 @@
     "build": "tsc",
     "test": "vitest run",
     "test:watch": "vitest",
-    "agent": "tsx src/agent/runAgent.ts"
+    "sellers": "tsx src/sellers/server.ts",
+    "agent": "tsx src/agent/runAgent.ts",
+    "evidence": "tsx src/x402/generateLocalEvidence.ts"
   },
   "keywords": [
     "x402",
