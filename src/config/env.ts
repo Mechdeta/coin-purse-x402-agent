@@ -31,6 +31,7 @@ const envSchema = z.object({
   LEDGER_DB_PATH: z.string().default('data/ledger.sqlite'),
   BASE_SEPOLIA_RPC_URL: z.string().url().default('https://sepolia.base.org'),
   BUYER_PRIVATE_KEY: z.string().optional(),
+  X402_PRIVATE_KEY: z.string().optional(),
   LLM_API_KEY: z.string().optional(),
   LLM_MODEL: z.string().default('gpt-4o-mini'),
 });
@@ -71,7 +72,7 @@ export function loadConfig(envOverrides?: Record<string, string | undefined>): A
     }),
     ledgerDbPath: parsed.LEDGER_DB_PATH,
     rpcUrl: parsed.BASE_SEPOLIA_RPC_URL,
-    buyerPrivateKey: parsed.BUYER_PRIVATE_KEY,
+    buyerPrivateKey: parsed.X402_PRIVATE_KEY || parsed.BUYER_PRIVATE_KEY,
     llmApiKey: parsed.LLM_API_KEY,
     llmModel: parsed.LLM_MODEL,
   });

@@ -21,7 +21,10 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@x402/core": "^2.27.0",
+    "@x402/fetch": "^2.27.0",
     "dotenv": "^16.4.7",
+    "viem": "^2.56.9",
     "zod": "^3.24.2"
   },
   "devDependencies": {
