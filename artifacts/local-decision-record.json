@@ -1,0 +1,122 @@
+{
+  "runId": "local-evidence-1790521601041",
+  "timestamp": "2026-09-27T15:06:41.041Z",
+  "environment": "local_test",
+  "realSettlementPerformed": false,
+  "note": "Automated local test evidence using local HTTP 402 sellers and deterministic client signing. Not an on-chain transaction.",
+  "targetNetwork": "eip155:84532",
+  "approvedAsset": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+  "spendingPolicyLimits": {
+    "maxPerCallBaseUnits": "500000",
+    "maxPerCallUsdFormatted": "$0.50 USDC",
+    "totalBudgetBaseUnits": "5000000",
+    "totalBudgetUsdFormatted": "$5.00 USDC"
+  },
+  "cumulativeSpendBaseUnits": "50000",
+  "cumulativeSpendUsdFormatted": "$0.05 USDC",
+  "totalDecisions": 4,
+  "totalPaid": 1,
+  "totalRefused": 3,
+  "testCases": [
+    {
+      "scenario": "Honest Seller",
+      "seller": "honest-research-seller",
+      "endpoint": "/research",
+      "quotedAmountBaseUnits": "50000",
+      "quotedAmountUsdFormatted": "$0.05 USDC",
+      "network": "eip155:84532",
+      "asset": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+      "decision": "paid",
+      "reason": "within_spending_policy: Quoted payment satisfies all spending policies and allowlists",
+      "signerInvocationCount": 1,
+      "httpStatus": 200,
+      "success": true
+    },
+    {
+      "scenario": "Rogue Seller (Excessive Price)",
+      "seller": "rogue-excessive-seller",
+      "endpoint": "/research",
+      "quotedAmountBaseUnits": "4990000",
+      "quotedAmountUsdFormatted": "$4.99 USDC",
+      "network": "eip155:84532",
+      "asset": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+      "decision": "refused",
+      "reason": "per_call_limit_exceeded: Quoted amount (4990000 base units) exceeds per-call ceiling of 500000 base units",
+      "signerInvocationCount": 0,
+      "httpStatus": 402,
+      "success": false
+    },
+    {
+      "scenario": "Rogue Seller (Wrong Network)",
+      "seller": "rogue-wrong-network-seller",
+      "endpoint": "/wrong-network",
+      "quotedAmountBaseUnits": "50000",
+      "network": "eip155:1",
+      "asset": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+      "decision": "refused",
+      "reason": "network_not_allowed: Network \"eip155:1\" is not in the approved allowlist [eip155:84532]",
+      "signerInvocationCount": 0,
+      "httpStatus": 402,
+      "success": false
+    },
+    {
+      "scenario": "Rogue Seller (Wrong Asset)",
+      "seller": "rogue-wrong-asset-seller",
+      "endpoint": "/wrong-asset",
+      "quotedAmountBaseUnits": "50000",
+      "network": "eip155:84532",
+      "asset": "0xdeaddeaddeaddeaddeaddeaddeaddeaddeaddead",
+      "decision": "refused",
+      "reason": "asset_not_allowed: Asset \"0xdeaddeaddeaddeaddeaddeaddeaddeaddeaddead\" is not in the approved allowlist [0x036cbd53842c5426634e7929541ec2318f3dcf7e]",
+      "signerInvocationCount": 0,
+      "httpStatus": 402,
+      "success": false
+    }
+  ],
+  "ledgerRecords": [
+    {
+      "id": 1,
+      "timestamp": "2026-09-27T15:06:41.024Z",
+      "seller": "honest-research-seller",
+      "endpoint": "/research",
+      "decision": "paid",
+      "amountBaseUnits": "50000",
+      "network": "eip155:84532",
+      "asset": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+      "reason": "Quoted payment satisfies all spending policies and allowlists"
+    },
+    {
+      "id": 2,
+      "timestamp": "2026-09-27T15:06:41.031Z",
+      "seller": "rogue-excessive-seller",
+      "endpoint": "/research",
+      "decision": "refused",
+      "amountBaseUnits": "4990000",
+      "network": "eip155:84532",
+      "asset": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+      "reason": "per_call_limit_exceeded: Quoted amount (4990000 base units) exceeds per-call ceiling of 500000 base units"
+    },
+    {
+      "id": 3,
+      "timestamp": "2026-09-27T15:06:41.035Z",
+      "seller": "rogue-wrong-network-seller",
+      "endpoint": "/wrong-network",
+      "decision": "refused",
+      "amountBaseUnits": "50000",
+      "network": "eip155:1",
+      "asset": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+      "reason": "network_not_allowed: Network \"eip155:1\" is not in the approved allowlist [eip155:84532]"
+    },
+    {
+      "id": 4,
+      "timestamp": "2026-09-27T15:06:41.039Z",
+      "seller": "rogue-wrong-asset-seller",
+      "endpoint": "/wrong-asset",
+      "decision": "refused",
+      "amountBaseUnits": "50000",
+      "network": "eip155:84532",
+      "asset": "0xdeaddeaddeaddeaddeaddeaddeaddeaddeaddead",
+      "reason": "asset_not_allowed: Asset \"0xdeaddeaddeaddeaddeaddeaddeaddeaddeaddead\" is not in the approved allowlist [0x036cbd53842c5426634e7929541ec2318f3dcf7e]"
+    }
+  ]
+}

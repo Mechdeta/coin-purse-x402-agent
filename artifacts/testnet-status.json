@@ -1,0 +1,13 @@
+{
+  "status": "blocked_no_testnet_funds",
+  "network": "eip155:84532",
+  "chainId": 84532,
+  "asset": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+  "walletAddress": "0x751fc0fa4f7BA49c57172F9a900f4CFeF382F1E6",
+  "ethBalance": "0",
+  "usdcBalanceBaseUnits": "0",
+  "realSettlementPerformed": false,
+  "reason": "Test wallet has no Base Sepolia ETH or test USDC.",
+  "localX402FlowTested": true,
+  "timestamp": "2026-09-27T15:06:00.000Z"
+}
