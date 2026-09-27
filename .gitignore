@@ -1,0 +1,30 @@
+# Environment files
+.env
+.env*.local
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Build artifacts
+dist/
+build/
+*.tsbuildinfo
+
+# SQLite databases & durable data
+data/
+*.sqlite
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm
+*.db
+
+# Logs & scratch
+*.log
+npm-debug.log*
+logs/
+
+# Secrets and keys
+*.key
+*.pem
+*.pfx
